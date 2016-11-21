@@ -2,8 +2,8 @@ package dbService;
 
 import java.util.List;
 import javax.persistence.*;
-import model.AddressBookOwner;
-import model.Contact;
+import model.User;
+import model.Ticket;
 
 public class JPAService {
 
@@ -13,7 +13,7 @@ public class JPAService {
    public int findOwnerID(String name) {
        int ownerID=0;
        Query query = em.createQuery("SELECT o.id FROM AddressBookOwner o WHERE o.name=:value",
-               AddressBookOwner.class).setParameter("value", name);
+               User.class).setParameter("value", name);
        try{
        ownerID = (int) query.getSingleResult();
        }
@@ -26,19 +26,20 @@ public class JPAService {
    public boolean findOwner(String name){
        int id = findOwnerID(name);
        boolean found = false;
-       AddressBookOwner abo = em.find(AddressBookOwner.class, id);
+       User abo = em.find(User.class, id);
        if (abo != null){
            found = true;       
        }
        return found;   
    }
     
-    public void printAllContacts(String name){
+    public void printAllTickets(String name){
         int id = findOwnerID(name);
-        Query q = em.createNativeQuery("SELECT C.ID, C.CNAME, C.ADDRESS, C.PNUMBER, C.EMAIL FROM CONTACTS C, CONTACTSADDRESSBOOK CAB\n WHERE C.ID = CAB.CID\n and CAB.ABID=" +id, Contact.class);
-        List<Contact> results = q.getResultList();
+        Query q = em.createNativeQuery("SELECT U.ID, U.NAME, T.TICKET_TYPE, T.TICKET_COST FROM USER U, TICKET T"
+                + "\n WHERE U.ID = T.ID\n and U.USER_ID=" +id, Ticket.class);
+        List<Ticket> results = q.getResultList();
         
-        for (Contact c : results) {
+        for (Ticket c : results) {
             System.out.println(c);
         }
     }
@@ -53,7 +54,7 @@ public class JPAService {
                 + "where C.ID = CAB.CID\n" 
                 + "and CAB.ABID = " + ownerid 
                 + "and c.id = " + cid); 
-        List<Contact> results = q.getResultList(); 
+        List<Ticket> results = q.getResultList(); 
         // easier than for loop below 
         if (!results.isEmpty()) { found = true; 
         } 
@@ -62,27 +63,27 @@ public class JPAService {
         
         public void updateContact(int id, String newNum) { 
             em.getTransaction().begin();
-            Contact c = em.find(Contact.class, id); 
-            c.setPhoneNumber(newNum); 
+            Ticket c = em.find(Ticket.class, id); 
+//            c.setPhoneNumber(newNum); 
             em.getTransaction().commit(); 
         }
     
         public void removeContact(int id){
-            Contact c = em.find(Contact.class, id);
+            Ticket c = em.find(Ticket.class, id);
             em.getTransaction().begin();
             em.remove(c);
             em.getTransaction().commit();
         }
     
-        public Contact createContact(String nameAdd, String addAdd, String emailAdd, String numAdd, String owner) { 
-            int id = findOwnerID(owner);
-            AddressBookOwner abo = em.find(AddressBookOwner.class, id); 
-            em.getTransaction().begin(); 
-            Contact c = new Contact(nameAdd, addAdd, emailAdd, numAdd); 
-            c.addStaff(abo); 
-            em.getTransaction().commit(); 
-            return c; 
-        }
+//        public Ticket createContact(String nameAdd, String addAdd, String emailAdd, String numAdd, String owner) { 
+//            int id = findOwnerID(owner);
+//            User abo = em.find(User.class, id); 
+//            em.getTransaction().begin(); 
+////            Ticket c = new Ticket(nameAdd, addAdd, emailAdd, numAdd); 
+//            c.addStaff(abo); 
+//            em.getTransaction().commit(); 
+//            return c; 
+//        }
     
     
 }
