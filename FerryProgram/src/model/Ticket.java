@@ -12,7 +12,7 @@ public class Ticket {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cid_seq")
-    private int id;
+    private int ticket_ID;
     private String ticket_type;         
     private double ticket_cost;
     
@@ -27,17 +27,17 @@ public class Ticket {
     }
 
     public Ticket(int id, String ticket_type, double ticket_cost) {
-        this.id = id;
+        this.ticket_ID = id;
         this.ticket_type = ticket_type;
         this.ticket_cost = ticket_cost;
     }
 
     public int getId() {
-        return id;
+        return ticket_ID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.ticket_ID = id;
     }
 
     public String getTicket_type() {

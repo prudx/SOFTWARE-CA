@@ -7,7 +7,7 @@ import javax.persistence.*;
 @SuppressWarnings("SerializableClass")
 public class User {
     @Id
-    private int id;
+    private int user_ID;
     private String username;
     private String name;
     private String dob;
@@ -22,11 +22,11 @@ public class User {
     }
 
     public int getId() {
-        return id;
+        return user_ID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.user_ID = id;
     }
 
     public Ticket getContact(int i) {
