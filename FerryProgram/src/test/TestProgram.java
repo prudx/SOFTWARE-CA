@@ -30,9 +30,12 @@ public class TestProgram {
                     System.out.println("-----------------------------------------------------------");
                     System.out.println("Please enter your username");
                     String usernameEntered = in.nextLine();
+                    System.out.println("Please enter your password");
+                    String password = in.nextLine();
                     if (!jpas.findUser(usernameEntered)) {
                         System.out.println("Username not found");
-                    } else {
+                    } else if (jpas.passwordMatch(password,usernameEntered) == true){
+                        System.out.println("\nLogin succesful");
                         displayMenu2(usernameEntered);
                     }
                     break;
@@ -87,10 +90,10 @@ public class TestProgram {
                 case 3:
                     System.out.println("Please enter your old password:");
                     String oldPass = in.nextLine();
-                    if(oldPass.equals(password HERE)){
-                        System.out.println("Please enter new password: ");
-                        String newPass = in.nextLine();
-                    }
+//                    if(oldPass.equals(password HERE)){
+//                        System.out.println("Please enter new password: ");
+//                        String newPass = in.nextLine();
+//                    }
                 case 4:
                     System.out.println("Please enter the id of the ticket you wish to delete");
                     int idDelete = in.nextInt();

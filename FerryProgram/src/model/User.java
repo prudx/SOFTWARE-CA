@@ -5,9 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Users")
 @SuppressWarnings("SerializableClass")
-@SequenceGenerator(name = "uid_seq", initialValue = 3, allocationSize = 1)
+@SequenceGenerator(name = "uid_seq", sequenceName="uid_seq", allocationSize = 1)
 public class User {
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "uid_seq")
     private int user_ID;
     private String username;
     private String password;

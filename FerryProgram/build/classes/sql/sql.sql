@@ -13,6 +13,11 @@ drop table ticket;
 drop table users;
 drop table route;
 drop table ferry;
+drop sequence uid_seq;
+drop sequence tid_seq;
+
+create sequence uid_seq increment by 1 start with 3;
+create sequence tid_seq increment by 1 start with 1;
 
 create table ferry(
 ferry_ID number,
@@ -47,8 +52,8 @@ Primary Key(user_id)
 
 create table ticket(
 ticket_ID number,
-ticket_type varchar2(255),
-ticket_cost number,
+returnDate varchar2(255),
+depDate number,
 route_ID number,
 Primary Key(ticket_id),
 Foreign Key(route_ID) references route on delete cascade

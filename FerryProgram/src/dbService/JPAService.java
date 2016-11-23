@@ -1,5 +1,6 @@
 package dbService;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.persistence.*;
 import model.User;
@@ -29,9 +30,9 @@ public class JPAService {
            System.out.println("Nothing found");
        }
        return userID;
-   }
+    }
    
-   public boolean findUser(String name){
+    public boolean findUser(String name){
        int id = findUserID(name);
        boolean found = false;
        User currentUser = em.find(User.class, id);
@@ -39,9 +40,24 @@ public class JPAService {
            found = true;       
        }
        return found;
-       
-   }
+    }
     
+    public boolean passwordMatch(String passwordIn, String username){
+       boolean match = false;
+       Query q = em.createNativeQuery("SELECT U.password FROM Users U WHERE user_ID = "+findUserID(username));
+            List<String> results = q.getResultList();
+            String[] strArray = results.toArray(new String[0]);      //casts the list to array to string kind of
+            String passwordFound = Arrays.toString(strArray);
+     
+            passwordIn = "["+passwordIn+"]";                         //This is required because the list cast returns the password 
+                                                                     //inside [] brackets so we add these to the users entered password
+       if(passwordFound.equals(passwordIn)){
+           match = true;
+       } 
+       return match;
+    }
+   
+   
     public void printAllTickets(String name){
         int id = findUserID(name);
         Query q = em.createNativeQuery("SELECT T.ticket_id, T.ticket_type, T.ticket_cost, "
@@ -71,7 +87,7 @@ public class JPAService {
         } 
         return found; 
     }
-        public String findUserPassword()
+//        public String findUserPassword()
     
     
         public void updateContact(int id, String newNum) { 

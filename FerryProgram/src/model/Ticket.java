@@ -65,26 +65,10 @@ public class Ticket {
         this.route_id = route_id;
     }
 
-    
-
-    public List<User> getOlist() {
-        return olist;
-    }
-
-    public void setOlist(List<User> olist) {
-        this.olist = olist;
-    }
-
-    
-
-    public void addStaff(User s) {
-        olist.add(s);
-        s.getClist().add(this);
-    }
 
     @Override
     public String toString() {
         String s = "------------------------------------";
-        return s + "\n" + "Departing on: " +depDate +", Returning on: "+returnDate ;
+        return s + "Ticket ID: "+ticket_ID + "\n" + "Departing on: " +depDate +", Returning on: "+returnDate ;
     }
 }

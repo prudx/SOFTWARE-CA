@@ -14,7 +14,7 @@ import javax.persistence.*;
  * @author x00131205
  */
 @Entity
-@Table(name = "Routes")
+@Table(name = "Route")
 @SuppressWarnings("SerializableClass")
 public class Routes {
     
