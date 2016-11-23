@@ -34,19 +34,23 @@ public class User {
         return user_ID;
     }
 
-    public void setId(int id) {
-        this.user_ID = id;
+    public String getPassword() {
+        return password;
     }
 
-    public Ticket getContact(int i) {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    public Ticket getUserTicketlist(int i) {
         return ticketList.get(i);
     }
 
-    public String getOwner() {
+    public String getName() {
         return name;
     }
 
-    public List<Ticket> getClist() {
+    public List<Ticket> getFullTicketList() {
         return ticketList;
     }
     

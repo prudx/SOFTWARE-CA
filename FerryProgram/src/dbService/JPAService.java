@@ -71,7 +71,9 @@ public class JPAService {
         } 
         return found; 
     }
-        
+        public String findUserPassword()
+    
+    
         public void updateContact(int id, String newNum) { 
             em.getTransaction().begin();
             Ticket c = em.find(Ticket.class, id); 

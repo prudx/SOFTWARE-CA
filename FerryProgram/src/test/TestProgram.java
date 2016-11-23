@@ -61,7 +61,7 @@ public class TestProgram {
         while (true) {
             System.out.println("Please press 1 to buy a new ticket");
             System.out.println("Please press 2 to view the tickets you've bought");
-            System.out.println("Please press 3 to if you want change ticket type");
+            System.out.println("Please press 3 to update your password");
             System.out.println("Please press 4 to cancel a ticket");
             System.out.println("Please press 5 to go back to main menu");
             System.out.println("Press 6 to quit");
@@ -85,6 +85,13 @@ public class TestProgram {
                     break;
                      
                 case 3:
+                    System.out.println("Please enter your old password:");
+                    String oldPass = in.nextLine();
+                    if(oldPass.equals(password HERE)){
+                        System.out.println("Please enter new password: ");
+                        String newPass = in.nextLine();
+                    }
+                case 4:
                     System.out.println("Please enter the id of the ticket you wish to delete");
                     int idDelete = in.nextInt();
                     in.nextLine();
@@ -94,17 +101,6 @@ public class TestProgram {
                         jpas.deleteTicket(idDelete);
                         System.out.println("Entity removed");
                     }
-                    break;
-                case 4:
-                    System.out.println("please enter the name of the contact you wish to add");
-                    String nameAdd = in.nextLine();
-                    System.out.println("please enter the address of the contact you wish to add");
-                    String addAdd = in.nextLine();
-                    System.out.println("please enter the email of the contact you wish to add");
-                    String emailAdd = in.nextLine();
-                    System.out.println("please enter the number of the contact you wish to add");
-//                    String numAdd = in.nextLine();
-//                    jpas.createContact(nameAdd, addAdd, emailAdd, numAdd, owner);
                     break;
                 case 5:
                     displayMenu1();
