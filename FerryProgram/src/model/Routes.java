@@ -20,6 +20,8 @@ public class Routes {
     
     @Id
     private int route_id;
+    private String route_name;
+    private int route_time;
 
     @OneToMany(mappedBy = "route_id")
     private List<Ticket> tlist = new ArrayList<>();

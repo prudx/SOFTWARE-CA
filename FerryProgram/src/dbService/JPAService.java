@@ -44,12 +44,13 @@ public class JPAService {
     
     public void printAllTickets(String name){
         int id = findUserID(name);
-        Query q = em.createNativeQuery("SELECT T.ticket_id, T.ticket_type, T.ticket_cost "
-                + "FROM Ticket T, Booking B"
-                + "\n WHERE B.ticket_ID = T.ticket_ID"
-                + " AND B.user_ID = "+id, Ticket.class);
-        List<Ticket> results = q.getResultList();
-        
+        Query q = em.createNativeQuery("SELECT T.ticket_id, T.ticket_type, T.ticket_cost, "
+                + "R.route_name, R.route_id "
+                + "FROM Ticket T, Booking B, Route R \n"
+                + "WHERE R.route_id = T.ticket_id \n"
+                + "AND T.ticket_ID = B.ticket_ID \n"
+                + "AND B.user_ID = "+id, Ticket.class);
+        List<Ticket> results = q.getResultList(); //How to display route columns with this??
         for (Ticket c : results) {
             System.out.println(c);
         }

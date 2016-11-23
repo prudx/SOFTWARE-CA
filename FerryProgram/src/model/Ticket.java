@@ -13,8 +13,8 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tid_seq")
     private int ticket_ID;
-    private String ticket_type;         
-    private double ticket_cost;
+    private String depDate;         
+    private String returnDate;
     
     @ManyToOne()
     @JoinColumn(name = "route_id") 
@@ -26,35 +26,46 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(int id, String ticket_type, double ticket_cost) {
-        this.ticket_ID = id;
-        this.ticket_type = ticket_type;
-        this.ticket_cost = ticket_cost;
+    public Ticket(int ticket_ID, String depDate, String returnDate, Routes route_id) {
+        this.ticket_ID = ticket_ID;
+        this.depDate = depDate;
+        this.returnDate = returnDate;
+        this.route_id = route_id;
     }
 
-    public int getId() {
+    public int getTicket_ID() {
         return ticket_ID;
     }
 
-    public void setId(int id) {
-        this.ticket_ID = id;
+    public void setTicket_ID(int ticket_ID) {
+        this.ticket_ID = ticket_ID;
     }
 
-    public String getTicket_type() {
-        return ticket_type;
+    public String getDepDate() {
+        return depDate;
     }
 
-    public void setTicket_type(String ticket_type) {
-        this.ticket_type = ticket_type;
+    public void setDepDate(String depDate) {
+        this.depDate = depDate;
     }
 
-    public double getTicket_cost() {
-        return ticket_cost;
+    public String getReturnDate() {
+        return returnDate;
     }
 
-    public void setTicket_cost(double ticket_cost) {
-        this.ticket_cost = ticket_cost;
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
+
+    public Routes getRoute_id() {
+        return route_id;
+    }
+
+    public void setRoute_id(Routes route_id) {
+        this.route_id = route_id;
+    }
+
+    
 
     public List<User> getOlist() {
         return olist;
@@ -74,6 +85,6 @@ public class Ticket {
     @Override
     public String toString() {
         String s = "------------------------------------";
-        return s + "\n" + "Ticket type: " +ticket_type +", Ticket cost: "+ticket_cost ;
+        return s + "\n" + "Departing on: " +depDate +", Returning on: "+returnDate ;
     }
 }

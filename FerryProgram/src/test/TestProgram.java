@@ -77,8 +77,6 @@ public class TestProgram {
                     String returnDate = in.nextLine();
                     System.out.println("please enter the route you wish to travel");
                     String routeIn = in.nextLine();
-                    System.out.println("please enter the number of the contact you wish to add");
-                    String numAdd = in.nextLine();
                     break;
                 case 2:
                     System.out.println("Here are your tickets:");
