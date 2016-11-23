@@ -10,8 +10,12 @@ public class JPAService {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("FerryProgram_PU");
     EntityManager em = emf.createEntityManager();
     
-    public void createUser(String username, String name, String DOB){
-        
+    public User createUser(String username, String password, String name, String DOB){
+        em.getTransaction().begin(); 
+        User u = new User(username, password, name, DOB); 
+        em.persist(u);
+        em.getTransaction().commit(); 
+            return u; 
     }
 
     public int findUserID(String username) {

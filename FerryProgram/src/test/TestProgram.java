@@ -37,21 +37,21 @@ public class TestProgram {
                     }
                     break;
                 case 2:
-                    System.out.println("please enter a new username");
-                    String nameAdd = in.nextLine();
+                    System.out.println("please enter a new username:");
+                    String usernameAdd = in.nextLine();
+                    System.out.println("please enter a password:");
+                    String passwordAdd = in.nextLine();
                     System.out.println("please enter in your name");
-                    String addAdd = in.nextLine();
+                    String nameAdd = in.nextLine();
                     System.out.println("please enter your date of birth");
-                    String emailAdd = in.nextLine();
-                    System.out.println("please enter the number of the contact you wish to add");
-                    String numAdd = in.nextLine();
-//                    jpas.createUser(nameAdd, addAdd, emailAdd, numAdd, owner);
+                    String dobAdd = in.nextLine();
+                    jpas.createUser(usernameAdd, passwordAdd, nameAdd, dobAdd);
                     break;
                 case 3:
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid Option entered");
+                    System.out.println("\nInvalid Option entered\n");
                     break;
             }
         }
@@ -105,7 +105,7 @@ public class TestProgram {
                     System.out.println("please enter the email of the contact you wish to add");
                     String emailAdd = in.nextLine();
                     System.out.println("please enter the number of the contact you wish to add");
-                    String numAdd = in.nextLine();
+//                    String numAdd = in.nextLine();
 //                    jpas.createContact(nameAdd, addAdd, emailAdd, numAdd, owner);
                     break;
                 case 5:

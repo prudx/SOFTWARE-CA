@@ -7,10 +7,10 @@
  * Author:  x00131205
  * Created: 21-Nov-2016
  */
+drop table ferryroute;
 drop table booking;
 drop table ticket;
 drop table users;
-drop table ferryroute;
 drop table route;
 drop table ferry;
 
@@ -39,6 +39,7 @@ Foreign Key(route_ID) references route on delete cascade
 create table users(
 user_ID number,
 username varchar2(255),
+password varchar2(255),
 name varchar2(255),
 DOB Date,
 Primary Key(user_id)
@@ -71,8 +72,8 @@ INSERT INTO ROUTE VALUES(6,'Belfast-Manchester',360);
 INSERT INTO ROUTE VALUES(7,'Rosslare-Pembroke',300);
 INSERT INTO ROUTE VALUES(8,'Rosslare-Fishguardl',360);
 
-INSERT INTO USERS VALUES(1,'Crx','Craig','08-JAN-1997');
-INSERT INTO USERS VALUES(2,'prudx','Daniel','04-APR-1997');
+INSERT INTO USERS VALUES(1,'Crx','password','Craig','08-JAN-1997');
+INSERT INTO USERS VALUES(2,'prudx','password','Daniel','04-APR-1997');
 
 INSERT INTO FERRY VALUES(1,'Small ferry',1);
 INSERT INTO FERRY VALUES(2,'Big ferry',2);

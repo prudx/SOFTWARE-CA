@@ -10,14 +10,14 @@
       <property name="javax.persistence.jdbc.user" value="x00131205"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
       <property name="javax.persistence.jdbc.password" value="db08Jan97"/>-->
-      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.10.2.7:1521/global1"/>
+<!--      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.10.2.7:1521/global1"/>
       <property name="javax.persistence.jdbc.user" value="x00131205"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.password" value="db08Jan97"/>
-      <!--      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.10.2.7:1521/global1"/>
+      <property name="javax.persistence.jdbc.password" value="db08Jan97"/>-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@10.10.2.7:1521/global1"/>
       <property name="javax.persistence.jdbc.user" value="x00127907"/>
       <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.password" value="db04Apr97"/>-->
+      <property name="javax.persistence.jdbc.password" value="db04Apr97"/>
     </properties>
   </persistence-unit>
 </persistence>

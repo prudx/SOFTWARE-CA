@@ -10,6 +10,7 @@ public class User {
     @Id
     private int user_ID;
     private String username;
+    private String password;
     private String name;
     private String dob;
     
@@ -22,6 +23,13 @@ public class User {
     public User() {        
     }
 
+    public User(String username, String password, String name, String dob) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.dob = dob;
+    }
+    
     public int getId() {
         return user_ID;
     }
@@ -41,4 +49,6 @@ public class User {
     public List<Ticket> getClist() {
         return ticketList;
     }
+    
+    
 }
