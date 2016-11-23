@@ -7,11 +7,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Ticket")
 @SuppressWarnings("SerializableClass")
-@SequenceGenerator(name = "cid_seq", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "tid_seq", initialValue = 10, allocationSize = 1)
 public class Ticket {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cid_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tid_seq")
     private int ticket_ID;
     private String ticket_type;         
     private double ticket_cost;
@@ -73,7 +73,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        String s = "*************************************************";
+        String s = "------------------------------------";
         return s + "\n" + "Ticket type: " +ticket_type +", Ticket cost: "+ticket_cost ;
     }
 }

@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Users")
 @SuppressWarnings("SerializableClass")
+@SequenceGenerator(name = "uid_seq", initialValue = 3, allocationSize = 1)
 public class User {
     @Id
     private int user_ID;

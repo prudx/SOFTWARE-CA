@@ -19,10 +19,13 @@ import javax.persistence.*;
 public class Routes {
     
     @Id
-    private String route_id;
+    private int route_id;
 
     @OneToMany(mappedBy = "route_id")
     private List<Ticket> tlist = new ArrayList<>();
+    
+//    @OneToOne(mappedBy="ferry_id")
+//    private Ferry ferry_id;
     
     public Routes() {
     }

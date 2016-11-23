@@ -9,8 +9,12 @@ public class JPAService {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("FerryProgram_PU");
     EntityManager em = emf.createEntityManager();
+    
+    public void createUser(String username, String name, String DOB){
+        
+    }
 
-   public int findUserID(String username) {
+    public int findUserID(String username) {
        int userID=0;
        Query query = em.createQuery("SELECT u.user_ID FROM User u WHERE u.username=:value",
                User.class).setParameter("value", username);
@@ -18,7 +22,7 @@ public class JPAService {
        userID = (int) query.getSingleResult();
        }
        catch(NoResultException e){
-           System.out.println("Nothing found    "+e.getMessage());
+           System.out.println("Nothing found");
        }
        return userID;
    }
@@ -36,8 +40,10 @@ public class JPAService {
     
     public void printAllTickets(String name){
         int id = findUserID(name);
-        Query q = em.createNativeQuery("SELECT T.ticket_type, T.ticket_cost FROM Booking B, Ticket T"
-                + "\n WHERE B.user_ID = T.ticket_ID and B.ticket_ID = "+id, Ticket.class);
+        Query q = em.createNativeQuery("SELECT T.ticket_id, T.ticket_type, T.ticket_cost "
+                + "FROM Ticket T, Booking B"
+                + "\n WHERE B.ticket_ID = T.ticket_ID"
+                + " AND B.user_ID = "+id, Ticket.class);
         List<Ticket> results = q.getResultList();
         
         for (Ticket c : results) {
@@ -45,16 +51,15 @@ public class JPAService {
         }
     }
     
-    public boolean findContact(int cid, String user) { 
-        System. out.println("In here Contact ID" + cid); 
+    public boolean findTicket(int id, String user) { 
         boolean found = false; 
         int userid = findUserID(user); 
      
-        Query q = em.createNativeQuery("SELECT C.PNUMBER\n" 
-                + "FROM CONTACTS C, CONTACTSADDRESSBOOK CAB\n" 
-                + "where C.ID = CAB.CID\n" 
-                + "and CAB.ABID = " + userid 
-                + "and c.id = " + cid); 
+        Query q = em.createNativeQuery("SELECT T.ticket_id\n" 
+                + "FROM Ticket T, Booking B\n" 
+                + "WHERE B.ticket_ID = T.ticket_ID\n" 
+                + "and B.user_id = " + userid 
+                + "and T.ticket_id = " + id); 
         List<Ticket> results = q.getResultList(); 
         // easier than for loop below 
         if (!results.isEmpty()) { found = true; 
@@ -69,22 +74,24 @@ public class JPAService {
             em.getTransaction().commit(); 
         }
     
-        public void removeContact(int id){
+        public void deleteTicket(int id){
             Ticket c = em.find(Ticket.class, id);
             em.getTransaction().begin();
             em.remove(c);
             em.getTransaction().commit();
         }
     
-        public User createUser(String username, String name, String DOB) { 
-            
-            User u = em.find(User.class, id); 
-            em.getTransaction().begin(); 
-            User u = new User(nameAdd, addAdd, emailAdd, numAdd); 
-            c.addStaff(abo); 
-            em.getTransaction().commit(); 
-            return c; 
-        }
+//        public User createUser(String username, String name, String DOB) { 
+//            
+//            User u = em.find(User.class, id); 
+//            em.getTransaction().begin(); 
+//            User u = new User(nameAdd, addAdd, emailAdd, numAdd); 
+//            c.addStaff(abo); 
+//            em.getTransaction().commit(); 
+//            return c; 
+//        }
+        
+        
     
     
 }
