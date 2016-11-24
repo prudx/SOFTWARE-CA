@@ -29,7 +29,7 @@ Primary Key(ferry_id)
 create table route(
 route_ID number,
 route_name varchar2(255),
-route_journey_time number,
+route_time number,
 Primary Key(route_id)
 );
 
@@ -52,8 +52,8 @@ Primary Key(user_id)
 
 create table ticket(
 ticket_ID number,
-returnDate varchar2(255),
-depDate number,
+returnDate date,
+depDate date,
 route_ID number,
 Primary Key(ticket_id),
 Foreign Key(route_ID) references route on delete cascade
@@ -86,10 +86,10 @@ INSERT INTO FERRY VALUES(2,'Big ferry',2);
 INSERT INTO FERRYROUTE VALUES(1,1);
 INSERT INTO FERRYROUTE VALUES(2,2);
 
-INSERT INTO TICKET VALUES(1,'Adult',500,1);
-INSERT INTO TICKET VALUES(2,'Child',600,1);
-INSERT INTO TICKET VALUES(3,'Adult',5060,3);
-INSERT INTO TICKET VALUES(4,'Adult',50660,1);
+INSERT INTO TICKET VALUES(1,'08-JAN-1997','08-JAN-1997',1);
+INSERT INTO TICKET VALUES(2,'08-JAN-1997','08-JAN-1997',1);
+INSERT INTO TICKET VALUES(3,'08-JAN-1997','08-JAN-1997',3);
+INSERT INTO TICKET VALUES(4,'08-JAN-1997','08-JAN-1997',1);
 
 INSERT INTO BOOKING VALUES(1,1);
 INSERT INTO BOOKING VALUES(1,2);

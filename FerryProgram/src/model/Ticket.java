@@ -68,7 +68,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        String s = "------------------------------------";
+        String s = "------------------------------------\n";
         return s + "Ticket ID: "+ticket_ID + "\n" + "Departing on: " +depDate +", Returning on: "+returnDate ;
     }
 }

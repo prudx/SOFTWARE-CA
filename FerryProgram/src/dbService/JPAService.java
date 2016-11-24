@@ -60,7 +60,7 @@ public class JPAService {
    
     public void printAllTickets(String name){
         int id = findUserID(name);
-        Query q = em.createNativeQuery("SELECT T.ticket_id, T.ticket_type, T.ticket_cost, "
+        Query q = em.createNativeQuery("SELECT T.ticket_id, T.depDate, T.returnDate, "
                 + "R.route_name, R.route_id "
                 + "FROM Ticket T, Booking B, Route R \n"
                 + "WHERE R.route_id = T.ticket_id \n"
