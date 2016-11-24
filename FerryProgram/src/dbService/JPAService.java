@@ -27,13 +27,13 @@ public class JPAService {
        userID = (int) query.getSingleResult();
        }
        catch(NoResultException e){
-           System.out.println("Nothing found");
+           
        }
        return userID;
     }
    
-    public boolean findUser(String name){
-       int id = findUserID(name);
+    public boolean findUser(String username){
+       int id = findUserID(username);
        boolean found = false;
        User currentUser = em.find(User.class, id);
        if (currentUser != null){
@@ -56,7 +56,15 @@ public class JPAService {
        } 
        return match;
     }
-   
+    
+    public void setUsersPassword(String newPass, String usernameEntered){
+        int id = findUserID(usernameEntered);
+        em.getTransaction().begin();
+        User currentUser = em.find(User.class, id);
+        currentUser.setPassword(newPass);
+        em.persist(currentUser);
+        em.getTransaction().commit();         
+    }
    
     public void printAllTickets(String name){
         int id = findUserID(name);

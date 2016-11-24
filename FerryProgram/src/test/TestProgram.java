@@ -33,10 +33,12 @@ public class TestProgram {
                     System.out.println("Please enter your password");
                     String password = in.nextLine();
                     if (!jpas.findUser(usernameEntered)) {
-                        System.out.println("Username not found");
+                        System.out.println("Username or password incorrect\n");
                     } else if (jpas.passwordMatch(password,usernameEntered) == true){
-                        System.out.println("\nLogin succesful");
+                        System.out.println("Login succesful\n");
                         displayMenu2(usernameEntered);
+                    } else if (jpas.passwordMatch(password,usernameEntered) == false){
+                        System.out.println("Login unsuccesful\n");
                     }
                     break;
                 case 2:
@@ -66,7 +68,7 @@ public class TestProgram {
             System.out.println("Please press 2 to view the tickets you've bought");
             System.out.println("Please press 3 to update your password");
             System.out.println("Please press 4 to cancel a ticket");
-            System.out.println("Please press 5 to go back to main menu");
+            System.out.println("Please press 5 to sign out");
             System.out.println("Press 6 to quit");
 
             int choice = in.nextInt();
@@ -90,10 +92,14 @@ public class TestProgram {
                 case 3:
                     System.out.println("Please enter your old password:");
                     String oldPass = in.nextLine();
-//                    if(oldPass.equals(password HERE)){
-//                        System.out.println("Please enter new password: ");
-//                        String newPass = in.nextLine();
-//                    }
+                    if(jpas.passwordMatch(oldPass,usernameEntered) == true){
+                        System.out.println("Please enter your new password: ");
+                        String newPass = in.nextLine();
+                        jpas.setUsersPassword(newPass, usernameEntered);
+                    } else {
+                        System.out.println("Password incorrect, try again\n");                
+                    }
+                    break;
                 case 4:
                     System.out.println("Please enter the id of the ticket you wish to delete");
                     int idDelete = in.nextInt();
