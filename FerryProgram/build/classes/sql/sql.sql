@@ -17,7 +17,7 @@ drop sequence uid_seq;
 drop sequence tid_seq;
 
 create sequence uid_seq increment by 1 start with 3;
-create sequence tid_seq increment by 1 start with 1;
+create sequence tid_seq increment by 1 start with 10;
 
 create table ferry(
 ferry_ID number,
@@ -86,7 +86,7 @@ INSERT INTO FERRY VALUES(2,'Big ferry',2);
 INSERT INTO FERRYROUTE VALUES(1,1);
 INSERT INTO FERRYROUTE VALUES(2,2);
 
-INSERT INTO TICKET VALUES(1,'08-JAN-1997','08-JAN-1997',1);
+INSERT INTO TICKET VALUES(1,'08-JAN-2015','18-JAN-2015',1);
 INSERT INTO TICKET VALUES(2,'08-JAN-1997','08-JAN-1997',1);
 INSERT INTO TICKET VALUES(3,'08-JAN-1997','08-JAN-1997',3);
 INSERT INTO TICKET VALUES(4,'08-JAN-1997','08-JAN-1997',1);

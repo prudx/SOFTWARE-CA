@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 import model.User;
 import model.Ticket;
+import model.Routes;
 
 public class JPAService {
 
@@ -109,6 +110,12 @@ public class JPAService {
             Ticket c = em.find(Ticket.class, id);
             em.getTransaction().begin();
             em.remove(c);
+            em.getTransaction().commit();
+        }
+        
+        public void purchaseTicket(String depDate, String returnDate, Routes r) {
+            em.getTransaction().begin();
+            Ticket newTicket = new Ticket(depDate, returnDate, r);
             em.getTransaction().commit();
         }
     

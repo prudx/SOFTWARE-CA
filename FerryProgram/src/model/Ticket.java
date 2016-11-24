@@ -24,10 +24,11 @@ public class Ticket {
     private List<User> olist = new ArrayList<>();
 
     public Ticket() {
+        
     }
 
-    public Ticket(int ticket_ID, String depDate, String returnDate, Routes route_id) {
-        this.ticket_ID = ticket_ID;
+    public Ticket(String depDate, String returnDate, Routes route_id) {
+        
         this.depDate = depDate;
         this.returnDate = returnDate;
         this.route_id = route_id;

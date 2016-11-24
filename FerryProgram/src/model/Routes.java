@@ -31,6 +31,39 @@ public class Routes {
     
     public Routes() {
     }
+
+    public int getRoute_id() {
+        return route_id;
+    }
+
+    public void setRoute_id(int route_id) {
+        this.route_id = route_id;
+    }
+
+    public String getRoute_name() {
+        return route_name;
+    }
+
+    public void setRoute_name(String route_name) {
+        this.route_name = route_name;
+    }
+
+    public int getRoute_time() {
+        return route_time;
+    }
+
+    public void setRoute_time(int route_time) {
+        this.route_time = route_time;
+    }
+
+    public List<Ticket> getTlist() {
+        return tlist;
+    }
+
+    public void setTlist(List<Ticket> tlist) {
+        this.tlist = tlist;
+    }
+    
     
     
 }
