@@ -60,6 +60,11 @@ public class Routes {
         return tlist;
     }
 
+    public void addTicket(Ticket t){
+        this.tlist.add(t);
+        t.setR(this);
+    }
+    
     public void setTlist(List<Ticket> tlist) {
         this.tlist = tlist;
     }

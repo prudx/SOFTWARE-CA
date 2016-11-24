@@ -15,7 +15,7 @@ public class User {
     private String password;
     private String name;
     private String dob;
-    
+    //Does placement of this matter should it be reversed and in Ticket???
     @ManyToMany (cascade = CascadeType.PERSIST)
     @JoinTable(name="Booking",
     joinColumns = @JoinColumn(name="user_id"),

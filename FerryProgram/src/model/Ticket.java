@@ -19,7 +19,9 @@ public class Ticket {
     @ManyToOne()
     @JoinColumn(name = "route_id") 
     private Routes route_id;
-
+    
+    
+    
     @ManyToMany(mappedBy = "ticketList")
     private List<User> olist = new ArrayList<>();
 
@@ -27,13 +29,18 @@ public class Ticket {
         
     }
 
-    public Ticket(String depDate, String returnDate, Routes route_id) {
-        
+    public Ticket(String depDate, String returnDate) {
         this.depDate = depDate;
         this.returnDate = returnDate;
-        this.route_id = route_id;
     }
 
+//    public Ticket(String depDate, String returnDate, int route_id) {
+//        this.depDate = depDate;
+//        this.returnDate = returnDate;
+//        //this.route_id = route_id
+//    }
+
+    
     public int getTicket_ID() {
         return ticket_ID;
     }
@@ -66,10 +73,21 @@ public class Ticket {
         this.route_id = route_id;
     }
 
-
+    public void setR(Routes r) {
+        this.route_id = r;
+    }
+    
+    
     @Override
     public String toString() {
         String s = "------------------------------------\n";
-        return s + "Ticket ID: "+ticket_ID + "\n" + "Departing on: " +depDate +", Returning on: "+returnDate ;
+        return s + "Ticket ID: "+ticket_ID + " Departing on: " +depDate +", Returning on: "+returnDate ;
     }
+    
+//    public String toString() {
+//        String s = "------------------------------------\n";
+//        String d = String.format("%1$s %2$tB %2$td, %2$tY", " Departing on:", depDate +" ");
+//        String r = String.format("%1$s %2$tB %2$td, %2$tY", " Returning on:", returnDate +" ");
+//        return s + "Ticket ID: "+ticket_ID + d + r;
+//    }
 }

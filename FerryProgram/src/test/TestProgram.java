@@ -2,6 +2,7 @@ package test;
 
 import dbService.JPAService;
 import java.util.*;
+import model.Ticket;
 
 public class TestProgram {
 
@@ -48,7 +49,7 @@ public class TestProgram {
                     String passwordAdd = in.nextLine();
                     System.out.println("please enter in your name");
                     String nameAdd = in.nextLine();
-                    System.out.println("please enter your date of birth");
+                    System.out.println("please enter your date of birth (DD-Mon-YYYY)");
                     String dobAdd = in.nextLine();
                     jpas.createUser(usernameAdd, passwordAdd, nameAdd, dobAdd);
                     break;
@@ -76,12 +77,50 @@ public class TestProgram {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Please enter the departure date:");
+                    System.out.println("Please enter the departure date (DD-Mon-YYYY):");
                     String depDate = in.nextLine();
-                    System.out.println("Please enter the return date:");
+                    System.out.println("Please enter the return date (DD-Mon-YYYY):");
                     String returnDate = in.nextLine();
-                    System.out.println("please enter the route you wish to travel");
-                    String routeIn = in.nextLine();
+                    
+                    System.out.println("Please press 1 for Dublin-Hollyhead");
+                    System.out.println("Please press 2 for Dublin-Liverpool");
+                    System.out.println("Please press 3 for Dublin-Manchester");
+                    System.out.println("Please press 4 for Belfast-Hollyhead");
+                    System.out.println("Please press 5 for Belfast-Liverpool");
+                    System.out.println("Please press 6 for Belfast-Manchester");
+                    System.out.println("Please press 7 for Rosslare-Pembroke");
+                    System.out.println("Please press 8 for Rosslare-Fishguardl");
+                    int routeChoice = in.nextInt();
+                    
+                    switch (routeChoice) {
+                        case 1:
+                            // WE WANT TO CREATE A TICKET THIS WAY BUT -> see JPAservice method
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
+                            break;
+                        case 2:
+                            
+                            break;
+                        case 3:
+                            
+                            break;
+                        case 4:
+                            
+                            break;
+                        case 5:
+                            
+                            break;
+                        case 6:
+                            
+                            break;
+                        case 7:
+                            
+                            break;
+                        case 8:
+                            
+                            break;
+                         
+                    }
+                    
                     break;
                 case 2:
                     System.out.println("Here are your tickets:");

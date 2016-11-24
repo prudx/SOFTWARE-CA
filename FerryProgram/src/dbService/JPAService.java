@@ -113,9 +113,18 @@ public class JPAService {
             em.getTransaction().commit();
         }
         
-        public void purchaseTicket(String depDate, String returnDate, Routes r) {
+        public void linkTicket(int tid, String username){
+            int id = findUserID(username);
+            
+        }
+        
+        //THIS REQUIRES US TO HAVE A PARAMETER OF TYPE ROUTE WHEN WE DON'T KNOW HOW TO DO THIS
+        public void purchaseTicket(String depDate, String returnDate, int routeChoice, String username) {
             em.getTransaction().begin();
-            Ticket newTicket = new Ticket(depDate, returnDate, r);
+            Ticket newTicket = new Ticket(depDate, returnDate);
+            Routes r = new Routes();
+            em.persist(newTicket);
+            r.addTicket(newTicket);             //How to access it with it already being in database, instead of creating entity instance 
             em.getTransaction().commit();
         }
     
