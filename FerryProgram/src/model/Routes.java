@@ -75,7 +75,7 @@ public class Routes {
     @Override
     public String toString() {
         
-        return " Route: " + route_name + ", Route duration: " + route_time;
+        return " Route: " + route_name + ", Route duration: " + route_time+" minutes";
     }
     
     

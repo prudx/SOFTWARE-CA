@@ -17,7 +17,7 @@ drop sequence uid_seq;
 drop sequence tid_seq;
 
 create sequence uid_seq increment by 1 start with 3;
-create sequence tid_seq increment by 1 start with 10;
+create sequence tid_seq increment by 1 start with 4;
 
 create table ferry(
 ferry_ID number,

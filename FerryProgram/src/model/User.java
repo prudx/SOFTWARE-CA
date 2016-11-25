@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 @Entity
@@ -15,8 +18,7 @@ public class User {
     private String password;
     private String name;
     private String dob;
-    
-
+     
     @ManyToMany (cascade = CascadeType.PERSIST)
     @JoinTable(name="Booking",
     joinColumns = @JoinColumn(name="user_id"),
@@ -62,5 +64,7 @@ public class User {
     public List<Ticket> getFullTicketList() {
         return ticketList;
     }
+    
+    
     
 }

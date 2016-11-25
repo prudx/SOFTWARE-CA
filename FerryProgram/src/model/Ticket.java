@@ -1,6 +1,9 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
@@ -12,6 +15,9 @@ import javax.persistence.*;
 @SequenceGenerator(name = "tid_seq", initialValue = 10, allocationSize = 1)
 public class Ticket {
 
+    //DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    //Date date = new Date();
+    
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tid_seq")
     private int ticket_ID;
@@ -59,7 +65,7 @@ public class Ticket {
     public String getReturnDate() {
         return returnDate;
     }
-
+    
     public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }

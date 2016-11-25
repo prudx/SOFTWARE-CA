@@ -17,7 +17,7 @@ public class TestProgram {
         Scanner in = new Scanner(System.in);
 
         while (true) {
-            System.out.println("-----------------------------------------------------------");
+            System.out.println("\n-----------------------------------------------------------");
             System.out.println("Please press 1 to sign in");
             System.out.println("Please press 2 to create an account");
             System.out.println("Please press 3 to quit");
@@ -28,18 +28,17 @@ public class TestProgram {
 
             switch (choice) {
                 case 1:
-                    System.out.println("-----------------------------------------------------------");
                     System.out.println("Please enter your username");
                     String usernameEntered = in.nextLine();
                     System.out.println("Please enter your password");
                     String password = in.nextLine();
                     if (!jpas.findUser(usernameEntered)) {
-                        System.out.println("Username or password incorrect\n");
+                        System.out.println("\n~~~~~~Username or password incorrect");
                     } else if (jpas.passwordMatch(password,usernameEntered) == true){
-                        System.out.println("Login succesful\n");
+                        System.out.println("\n-------------- Login succesful, "+" Hello "+usernameEntered+" ----------------");
                         displayMenu2(usernameEntered);
                     } else if (jpas.passwordMatch(password,usernameEntered) == false){
-                        System.out.println("Login unsuccesful\n");
+                        System.out.println("\n~~~~~~Login unsuccesful");
                     }
                     break;
                 case 2:
@@ -54,6 +53,7 @@ public class TestProgram {
                     jpas.createUser(usernameAdd, passwordAdd, nameAdd, dobAdd);
                     break;
                 case 3:
+                    System.out.println("\n Goodbye, Thank you for your service!");
                     System.exit(0);
                     break;
                 default:
@@ -62,10 +62,12 @@ public class TestProgram {
             }
         }
     }
+    
+
     public static void displayMenu2(String usernameEntered) {
         Scanner in = new Scanner(System.in);
         while (true) {
-            System.out.println("Please press 1 to buy a new ticket");
+            System.out.println("\nPlease press 1 to buy a new ticket");
             System.out.println("Please press 2 to view the tickets you've bought");
             System.out.println("Please press 3 to update your password");
             System.out.println("Please press 4 to cancel a ticket");
@@ -82,7 +84,7 @@ public class TestProgram {
                     System.out.println("Please enter the return date (DD-Mmm-YYYY):");
                     String returnDate = in.nextLine();
                     
-                    System.out.println("Please press 1 for Dublin-Hollyhead");
+                    System.out.println("\nPlease press 1 for Dublin-Hollyhead");
                     System.out.println("Please press 2 for Dublin-Liverpool");
                     System.out.println("Please press 3 for Dublin-Manchester");
                     System.out.println("Please press 4 for Belfast-Hollyhead");
@@ -127,9 +129,8 @@ public class TestProgram {
                     
                     break;
                 case 2:
-                    System.out.println("Here are your tickets:");
+                    System.out.println("\nHere are your tickets:");
                     jpas.printAllTickets(usernameEntered);
-                    System.out.println("");
                     break;
                      
                 case 3:
@@ -157,6 +158,7 @@ public class TestProgram {
                 case 5:
                     displayMenu1();
                 case 6:
+                    System.out.println("\nGoodbye "+usernameEntered+", Thank you for your service!\n");
                     System.exit(0);
                     break;
                 default:

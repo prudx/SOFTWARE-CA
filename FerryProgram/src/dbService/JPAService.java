@@ -49,7 +49,7 @@ public class JPAService {
        List<User> results = query.getResultList();
        ArrayList<User> results1 = new ArrayList(1);
        results1.add(results.get(0));
-       User u = results1.get(0);                //?!?!? WHAT AM I DOING
+       User u = results1.get(0);                //?!?!? WHAT AM I DOING - hey it works
        return u;       
     }
     
@@ -82,8 +82,9 @@ public class JPAService {
         Query q = em.createNativeQuery("SELECT T.ticket_id, T.depDate, T.returnDate, T.route_id "
                 + "FROM Ticket T, Booking B \n"
                 + "WHERE B.ticket_id = T.ticket_id \n"
-                + "AND B.user_id = " +id, Ticket.class);
-        List<Ticket> results = q.getResultList(); //How to display route columns with this??
+                + "AND B.user_id = " +id
+                + "ORDER BY T.ticket_id", Ticket.class);
+        List<Ticket> results = q.getResultList(); 
         System.out.println("----------------------------------------------------------------------------------");
         for (Ticket c : results) {
             System.out.println(c);
@@ -100,8 +101,8 @@ public class JPAService {
                 + "and B.user_id = " + userid 
                 + "and T.ticket_id = " + id); 
         List<Ticket> results = q.getResultList(); 
-        // easier than for loop below 
-        if (!results.isEmpty()) { found = true; 
+        if (!results.isEmpty()) { 
+            found = true; 
         } 
         return found; 
     }
