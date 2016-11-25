@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Ticket")
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn (name ="Ticket Type")
 @SuppressWarnings("SerializableClass")
 @SequenceGenerator(name = "tid_seq", initialValue = 10, allocationSize = 1)
 public class Ticket {
@@ -75,6 +77,14 @@ public class Ticket {
 
     public void setR(Routes r) {
         this.route_id = r;
+    }
+
+    public List<User> getOlist() {
+        return olist;
+    }
+
+    public void setOlist(List<User> olist) {
+        this.olist = olist;
     }
     
     

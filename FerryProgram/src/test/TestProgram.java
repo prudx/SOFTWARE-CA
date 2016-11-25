@@ -77,9 +77,9 @@ public class TestProgram {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Please enter the departure date (DD-Mon-YYYY):");
+                    System.out.println("Please enter the departure date (DD-Mmm-YYYY):");
                     String depDate = in.nextLine();
-                    System.out.println("Please enter the return date (DD-Mon-YYYY):");
+                    System.out.println("Please enter the return date (DD-Mmm-YYYY):");
                     String returnDate = in.nextLine();
                     
                     System.out.println("Please press 1 for Dublin-Hollyhead");
@@ -90,35 +90,39 @@ public class TestProgram {
                     System.out.println("Please press 6 for Belfast-Manchester");
                     System.out.println("Please press 7 for Rosslare-Pembroke");
                     System.out.println("Please press 8 for Rosslare-Fishguardl");
+                    System.out.println("Please press 9 to cancel");
                     int routeChoice = in.nextInt();
                     
                     switch (routeChoice) {
                         case 1:
                             // WE WANT TO CREATE A TICKET THIS WAY BUT -> see JPAservice method
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 2:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 3:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 4:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 5:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 6:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 7:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
                         case 8:
-                            
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
                             break;
-                         
+                        case 9:
+                            displayMenu2(usernameEntered);
+                        default:
+                            System.out.println("Invalid selection");
                     }
                     
                     break;

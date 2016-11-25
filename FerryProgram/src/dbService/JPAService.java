@@ -118,11 +118,17 @@ public class JPAService {
             
         }
         
+        public Routes findRoute(int routeChoice){
+            Routes r = em.find(Routes.class, routeChoice);
+            r.setRoute_id(routeChoice);
+            return r;
+        }
+        
         //THIS REQUIRES US TO HAVE A PARAMETER OF TYPE ROUTE WHEN WE DON'T KNOW HOW TO DO THIS
-        public void purchaseTicket(String depDate, String returnDate, int routeChoice, String username) {
+        public void purchaseTicket(String depDate, String returnDate, int routeChoice) {
             em.getTransaction().begin();
             Ticket newTicket = new Ticket(depDate, returnDate);
-            Routes r = new Routes();
+            Routes r = findRoute(routeChoice);
             em.persist(newTicket);
             r.addTicket(newTicket);             //How to access it with it already being in database, instead of creating entity instance 
             em.getTransaction().commit();
