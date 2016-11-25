@@ -15,7 +15,8 @@ public class User {
     private String password;
     private String name;
     private String dob;
-    //Does placement of this matter should it be reversed and in Ticket???
+    
+
     @ManyToMany (cascade = CascadeType.PERSIST)
     @JoinTable(name="Booking",
     joinColumns = @JoinColumn(name="user_id"),
@@ -44,10 +45,16 @@ public class User {
         this.password = password;
     }
     
-    public Ticket getUserTicketlist(int i) {
-        return ticketList.get(i);
+//    public Ticket getUserTicketlist(int i) {
+//        return ticketList.get(i);
+//    }
+
+    public List<Ticket> getTicketList() {
+        return ticketList;
     }
 
+    
+    
     public String getName() {
         return name;
     }
@@ -55,6 +62,5 @@ public class User {
     public List<Ticket> getFullTicketList() {
         return ticketList;
     }
-    
     
 }

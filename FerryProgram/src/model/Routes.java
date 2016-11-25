@@ -5,6 +5,7 @@
  */
 package model;
 
+import dbService.JPAService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -17,6 +18,8 @@ import javax.persistence.*;
 @Table(name = "Route")
 @SuppressWarnings("SerializableClass")
 public class Routes {
+    
+    
     
     @Id
     private int route_id;
@@ -67,6 +70,12 @@ public class Routes {
     
     public void setTlist(List<Ticket> tlist) {
         this.tlist = tlist;
+    }
+
+    @Override
+    public String toString() {
+        
+        return " Route: " + route_name + ", Route duration: " + route_time;
     }
     
     

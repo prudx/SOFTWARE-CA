@@ -1,11 +1,11 @@
 package dbService;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.persistence.*;
-import model.User;
-import model.Ticket;
-import model.Routes;
+import model.*;
+
 
 public class JPAService {
 
@@ -32,7 +32,7 @@ public class JPAService {
        }
        return userID;
     }
-   
+    
     public boolean findUser(String username){
        int id = findUserID(username);
        boolean found = false;
@@ -41,6 +41,16 @@ public class JPAService {
            found = true;       
        }
        return found;
+    }
+    
+    public User findUserUser(String username) {
+       Query query = em.createQuery("SELECT u FROM User u WHERE u.username=:value",
+               User.class).setParameter("value", username);
+       List<User> results = query.getResultList();
+       ArrayList<User> results1 = new ArrayList(1);
+       results1.add(results.get(0));
+       User u = results1.get(0);                //?!?!? WHAT AM I DOING
+       return u;       
     }
     
     public boolean passwordMatch(String passwordIn, String username){
@@ -66,25 +76,24 @@ public class JPAService {
         em.persist(currentUser);
         em.getTransaction().commit();         
     }
-   
+
     public void printAllTickets(String name){
         int id = findUserID(name);
-        Query q = em.createNativeQuery("SELECT T.ticket_id, T.depDate, T.returnDate, "
-                + "R.route_name, R.route_id "
-                + "FROM Ticket T, Booking B, Route R \n"
-                + "WHERE R.route_id = T.ticket_id \n"
-                + "AND T.ticket_ID = B.ticket_ID \n"
-                + "AND B.user_ID = "+id, Ticket.class);
+        Query q = em.createNativeQuery("SELECT T.ticket_id, T.depDate, T.returnDate, T.route_id "
+                + "FROM Ticket T, Booking B \n"
+                + "WHERE B.ticket_id = T.ticket_id \n"
+                + "AND B.user_id = " +id, Ticket.class);
         List<Ticket> results = q.getResultList(); //How to display route columns with this??
+        System.out.println("----------------------------------------------------------------------------------");
         for (Ticket c : results) {
             System.out.println(c);
         }
+        System.out.println("----------------------------------------------------------------------------------");
     }
     
     public boolean findTicket(int id, String user) { 
         boolean found = false; 
         int userid = findUserID(user); 
-     
         Query q = em.createNativeQuery("SELECT T.ticket_id\n" 
                 + "FROM Ticket T, Booking B\n" 
                 + "WHERE B.ticket_ID = T.ticket_ID\n" 
@@ -96,15 +105,6 @@ public class JPAService {
         } 
         return found; 
     }
-//        public String findUserPassword()
-    
-    
-        public void updateContact(int id, String newNum) { 
-            em.getTransaction().begin();
-            Ticket c = em.find(Ticket.class, id); 
-//            c.setPhoneNumber(newNum); 
-            em.getTransaction().commit(); 
-        }
     
         public void deleteTicket(int id){
             Ticket c = em.find(Ticket.class, id);
@@ -113,38 +113,22 @@ public class JPAService {
             em.getTransaction().commit();
         }
         
-        public void linkTicket(int tid, String username){
-            int id = findUserID(username);
-            
-        }
-        
         public Routes findRoute(int routeChoice){
             Routes r = em.find(Routes.class, routeChoice);
             r.setRoute_id(routeChoice);
             return r;
         }
         
-        //THIS REQUIRES US TO HAVE A PARAMETER OF TYPE ROUTE WHEN WE DON'T KNOW HOW TO DO THIS
-        public void purchaseTicket(String depDate, String returnDate, int routeChoice) {
+        public void purchaseTicket(String depDate, String returnDate, int routeChoice, String usernameEntered) {
             em.getTransaction().begin();
             Ticket newTicket = new Ticket(depDate, returnDate);
             Routes r = findRoute(routeChoice);
+            r.addTicket(newTicket);   
             em.persist(newTicket);
-            r.addTicket(newTicket);             //How to access it with it already being in database, instead of creating entity instance 
+            
+            User u = findUserUser(usernameEntered);
+            newTicket.addUserToBooking(u);
             em.getTransaction().commit();
         }
-    
-//        public User createUser(String username, String name, String DOB) { 
-//            
-//            User u = em.find(User.class, id); 
-//            em.getTransaction().begin(); 
-//            User u = new User(nameAdd, addAdd, emailAdd, numAdd); 
-//            c.addStaff(abo); 
-//            em.getTransaction().commit(); 
-//            return c; 
-//        }
-        
-        
-    
-    
+  
 }

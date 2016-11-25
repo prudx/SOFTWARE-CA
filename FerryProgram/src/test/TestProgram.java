@@ -2,7 +2,7 @@ package test;
 
 import dbService.JPAService;
 import java.util.*;
-import model.Ticket;
+import model.*;
 
 public class TestProgram {
 
@@ -70,7 +70,7 @@ public class TestProgram {
             System.out.println("Please press 3 to update your password");
             System.out.println("Please press 4 to cancel a ticket");
             System.out.println("Please press 5 to sign out");
-            System.out.println("Press 6 to quit");
+            System.out.println("Please press 6 to quit");
 
             int choice = in.nextInt();
             in.nextLine();
@@ -96,28 +96,28 @@ public class TestProgram {
                     switch (routeChoice) {
                         case 1:
                             // WE WANT TO CREATE A TICKET THIS WAY BUT -> see JPAservice method
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 2:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 3:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 4:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 5:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 6:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 7:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 8:
-                            jpas.purchaseTicket(depDate, returnDate, routeChoice);
+                            jpas.purchaseTicket(depDate, returnDate, routeChoice, usernameEntered);
                             break;
                         case 9:
                             displayMenu2(usernameEntered);
